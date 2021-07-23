@@ -29,8 +29,8 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
-        spectrometer.cpp
-        spectrometer.h
+        Spectrometer.cpp
+        Spectrometer.h
         Display.cpp
         Display.h
 )

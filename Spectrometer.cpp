@@ -1,4 +1,4 @@
-#include "spectrometer.h"
+#include "Spectrometer.h"
 
 Spectrometer::Spectrometer(QWidget *parent)
     : QWidget(parent)

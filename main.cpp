@@ -1,4 +1,4 @@
-#include "spectrometer.h"
+#include "Spectrometer.h"
 
 #include <QApplication>
 
