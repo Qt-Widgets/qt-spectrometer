@@ -31,6 +31,8 @@ set(PROJECT_SOURCES
         main.cpp
         spectrometer.cpp
         spectrometer.h
+        Display.cpp
+        Display.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
