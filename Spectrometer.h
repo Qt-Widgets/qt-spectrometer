@@ -1,6 +1,7 @@
 #ifndef SPECTROMETER_H
 #define SPECTROMETER_H
 
+#include <QPushButton>
 #include <QWidget>
 
 #include "Display.h"
@@ -20,5 +21,7 @@ private:
     };
 
     Display *m_display {new Display {this}};
+    QPushButton *startButton = new QPushButton {"Start", this};
+    QPushButton *stopButton = new QPushButton {"Stop", this};
 };
 #endif // SPECTROMETER_H

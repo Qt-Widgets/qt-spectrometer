@@ -10,8 +10,6 @@ Spectrometer::Spectrometer(QWidget *parent)
     setWindowTitle("Spectrometer");
     setFixedSize(WIDTH, HEIGHT);
 
-    auto startButton = new QPushButton {"Start", this};
-    auto stopButton = new QPushButton {"Stop", this};
     startButton->move(600, 20);
     stopButton->move(600, 60);
 
