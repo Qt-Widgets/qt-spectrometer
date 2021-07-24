@@ -2,6 +2,7 @@
 #define ABSTRACTAXIS_H
 
 #include <QLabel>
+#include <QLayout>
 #include <QList>
 #include <QWidget>
 
@@ -12,10 +13,14 @@ public:
     explicit AbstractAxis(QWidget *parent = nullptr);
     virtual ~AbstractAxis() {}
 
+public slots:
+    void updateValues();
+
 protected:
     virtual void setupLayout() = 0;
 
     QLabel *m_axisLabel;
+    QLayout *m_valuesLayout;
     QList<double> m_values;
 };
 
