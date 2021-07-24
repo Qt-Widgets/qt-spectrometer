@@ -1,15 +1,16 @@
 #ifndef XAXIS_H
 #define XAXIS_H
 
-#include <QWidget>
+#include "AbstractAxis.h"
 
-class Xaxis : public QWidget
+class Xaxis : public AbstractAxis
 {
     Q_OBJECT
 public:
     explicit Xaxis(QWidget *parent = nullptr);
 
-signals:
+private:
+    void setupLayout() override;
 };
 
 #endif // XAXIS_H

@@ -36,6 +36,9 @@ set(PROJECT_SOURCES
         Display.h
         Display.cpp
 
+        AbstractAxis.h
+        AbstractAxis.cpp
+
         Xaxis.h
         Xaxis.cpp
 )

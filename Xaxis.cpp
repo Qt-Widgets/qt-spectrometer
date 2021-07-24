@@ -4,7 +4,12 @@
 #include <QLabel>
 #include <QVBoxLayout>
 
-Xaxis::Xaxis(QWidget *parent) : QWidget(parent)
+Xaxis::Xaxis(QWidget *parent) : AbstractAxis(parent)
+{
+    setupLayout();
+}
+
+void Xaxis::setupLayout()
 {
     //test
     setStyleSheet("background-color: red;");
@@ -27,7 +32,7 @@ Xaxis::Xaxis(QWidget *parent) : QWidget(parent)
         hbox->addWidget(l);
     }
 
-    auto xsLabel = new QLabel {"Xs"};
-    xsLabel->setAlignment(Qt::AlignHCenter);
-    vbox->addWidget(xsLabel);
+    m_axisLabel = new QLabel {"Xs"};
+    m_axisLabel->setAlignment(Qt::AlignHCenter);
+    vbox->addWidget(m_axisLabel);
 }
