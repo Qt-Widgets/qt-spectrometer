@@ -36,8 +36,8 @@ set(PROJECT_SOURCES
         Display.h
         Display.cpp
 
-        xAxis.h
-        xAxis.cpp
+        Xaxis.h
+        Xaxis.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
