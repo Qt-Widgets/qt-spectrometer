@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#include "Display.h"
+
 class Spectrometer : public QWidget
 {
     Q_OBJECT
@@ -16,5 +18,7 @@ private:
         WIDTH = 800,
         HEIGHT = 400
     };
+
+    Display *m_display {new Display {this}};
 };
 #endif // SPECTROMETER_H

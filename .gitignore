@@ -73,4 +73,4 @@ Thumbs.db
 
 # My excluded files
 *.user
-
+build/*
