@@ -29,10 +29,15 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
-        Spectrometer.cpp
+
         Spectrometer.h
-        Display.cpp
+        Spectrometer.cpp
+
         Display.h
+        Display.cpp
+
+        xAxis.h
+        xAxis.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -21,7 +21,7 @@ private:
     };
 
     Display *m_display {new Display {this}};
-    QPushButton *startButton = new QPushButton {"Start", this};
-    QPushButton *stopButton = new QPushButton {"Stop", this};
+    QPushButton *m_startButton = new QPushButton {"Start", this};
+    QPushButton *m_stopButton = new QPushButton {"Stop", this};
 };
 #endif // SPECTROMETER_H
