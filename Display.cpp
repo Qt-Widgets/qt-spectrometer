@@ -3,7 +3,6 @@
 #include <QDebug>
 #include <QPainter>
 #include <QRandomGenerator>
-#include <QTimer>
 #include <QVector>
 
 Display::Display(QWidget *parent)
@@ -37,10 +36,20 @@ void Display::paintEvent(QPaintEvent *)
         painter.drawLine(xs[i], ys[i], xs[i+1], ys[i+1]);
 }
 
-void Display::animate()
+void Display::refresh()
 {
     updateYvalues();
     update();
+}
+
+void Display::start()
+{
+    m_timer->start();
+}
+
+void Display::stop()
+{
+    m_timer->stop();
 }
 
 void Display::initializeXaxis()
@@ -63,8 +72,7 @@ void Display::updateYvalues()
 
 void Display::appendTimer()
 {
-    auto timer = new QTimer {this};
-    timer->setInterval(UPDATE_INTERVAL_MS);
-    connect(timer, &QTimer::timeout, this, &Display::animate);
-    timer->start();
+    m_timer->setInterval(UPDATE_INTERVAL_MS);
+    connect(m_timer, &QTimer::timeout, this, &Display::refresh);
+    m_timer->start();
 }

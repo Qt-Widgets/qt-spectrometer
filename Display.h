@@ -2,6 +2,7 @@
 #define DISPLAY_H
 
 #include <QOpenGLWidget>
+#include <QTimer>
 #include <QVector>
 
 class Display : public QOpenGLWidget
@@ -13,7 +14,9 @@ public:
     ~Display();
 
     void paintEvent(QPaintEvent *) override;
-    void animate();
+    void refresh();
+    void start();
+    void stop();
 
 private:
     void initializeXaxis();
@@ -29,6 +32,7 @@ private:
         UPDATE_INTERVAL_MS = 50
     };
 
+    QTimer *m_timer {new QTimer{this}};
     QVector<int> xs, ys;
 };
 #endif // DISPLAY_H
