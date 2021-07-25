@@ -5,7 +5,7 @@
 #include <QVector>
 #include <QWidget>
 
-#include "Display.h"
+#include "Screen.h"
 
 class Spectrometer : public QWidget
 {
@@ -16,21 +16,24 @@ public:
     ~Spectrometer();
 
 signals:
-    void receivedSamples(const QVector<qreal>& samples);
+    void receivedNewSamples(const QVector<qreal>& samples);
 
 private slots:
     void sendNewSamples();
 
 private:
     void appendTimer();
+    void setupDisplayControls();
 
     enum {
-        WIDTH = 800,
-        HEIGHT = 400,
+        WIDTH = 1500,
+        HEIGHT = 700,
         UPDATE_INTERVAL_MS = 10
     };
 
-    Display *m_display {new Display {this}};
+    int m_samplesSize = 500;
+
+    Screen *m_display {new Screen {this}};
     QTimer *m_timer {new QTimer{this}};
     QPushButton *m_startButton = new QPushButton {"Start", this};
     QPushButton *m_stopButton = new QPushButton {"Stop", this};

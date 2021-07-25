@@ -1,10 +1,14 @@
 #include "Spectrometer.h"
 
-#include <QPushButton>
 //test
+#include <QLineEdit>
+#include <QPushButton>
 #include <QRandomGenerator>
 //tset
-#include "Display.h"
+
+#include <QPushButton>
+
+#include "Screen.h"
 #include "Xaxis.h"
 
 Spectrometer::Spectrometer(QWidget *parent)
@@ -13,14 +17,17 @@ Spectrometer::Spectrometer(QWidget *parent)
     setWindowTitle("Spectrometer");
     setFixedSize(WIDTH, HEIGHT);
 
-    m_startButton->move(600, 20);
-    m_stopButton->move(600, 60);
+    m_startButton->move(width() - 100, 20);
+    m_stopButton->move(width() - 100, 60);
 
     auto xAxis = new Xaxis {this};
     xAxis->setFixedWidth(m_display->size().width());
     xAxis->move(0, m_display->size().height());
 
+    setupDisplayControls();
+    //test
     appendTimer();
+    //tset
 }
 
 Spectrometer::~Spectrometer()
@@ -29,18 +36,17 @@ Spectrometer::~Spectrometer()
 
 void Spectrometer::sendNewSamples()
 {
-    int samples_num = QRandomGenerator::global()->bounded(100, 200);
     QVector<qreal> ys;
-    for (auto i = 0; i < samples_num; ++i)
+    for (auto i = 0; i < m_samplesSize; ++i)
         ys << QRandomGenerator::global()->bounded(0, 100);
-    emit receivedSamples(ys);
+    emit receivedNewSamples(ys);
 }
 
 void Spectrometer::appendTimer()
 {
     m_timer->setInterval(UPDATE_INTERVAL_MS);
     connect(m_timer, &QTimer::timeout, this, &Spectrometer::sendNewSamples);
-    connect(this, &Spectrometer::receivedSamples, m_display, &Display::updateSpectrum);
+    connect(this, &Spectrometer::receivedNewSamples, m_display, &Screen::display);
 
     connect(m_startButton, &QPushButton::pressed, this, [this](){
         m_timer->start();
@@ -50,4 +56,9 @@ void Spectrometer::appendTimer()
     );
 
     m_timer->start();
+}
+
+void Spectrometer::setupDisplayControls()
+{
+
 }

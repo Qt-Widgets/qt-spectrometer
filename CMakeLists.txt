@@ -33,8 +33,8 @@ set(PROJECT_SOURCES
         Spectrometer.h
         Spectrometer.cpp
 
-        Display.h
-        Display.cpp
+        Screen.h
+        Screen.cpp
 
         AbstractAxis.h
         AbstractAxis.cpp

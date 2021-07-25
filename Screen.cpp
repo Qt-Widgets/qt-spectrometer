@@ -1,4 +1,4 @@
-#include "Display.h"
+#include "Screen.h"
 
 #include <QPainter>
 
