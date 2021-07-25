@@ -23,9 +23,9 @@ private:
 
     enum {
         LINE_WIDTH = 1,
-        WIDTH = 500,
-        MAX_Y_VALUE = 200,
-        UPDATE_INTERVAL_MS = 10
+        WIDTH = 900,
+        HEIGHT = 400,
+        MAX_SAMPLE_VALUE = 100
     };
 
     QVector<int> xs, ys;
