@@ -1,27 +1,19 @@
 #include "Display.h"
 
-//test
-#include <QDebug>
-//tset
 #include <QPainter>
-#include <QRandomGenerator>
-#include <QVector>
 
-Display::Display(QWidget *parent)
+Screen::Screen(QWidget *parent)
     : QOpenGLWidget(parent)
 {
     setWindowTitle("OpenGL Widget Example");
     setFixedSize(WIDTH, HEIGHT);
-
-    initializeXaxis();
-    initializeYaxis();
 }
 
-Display::~Display()
+Screen::~Screen()
 {
 }
 
-void Display::paintEvent(QPaintEvent *)
+void Screen::paintEvent(QPaintEvent *)
 {
     QPainter painter {this};
     QBrush brush {Qt::white, Qt::SolidPattern};
@@ -33,35 +25,23 @@ void Display::paintEvent(QPaintEvent *)
                 QRectF(0, 0, width(), height()),
                 Qt::black);
 
-    auto samplesSize = ys.size();
+    auto samplesSize = m_ys.size();
     auto xScale = (qreal)width() / (qreal)samplesSize;
     auto yScale = (qreal)height() / MAX_SAMPLE_VALUE;
 
-    xs.clear();
+    m_xs.clear();
     for (auto i = 0; i < samplesSize - 1; ++i)
-        xs << xScale * i;
-    xs.append(width());
+        m_xs << xScale * i;
+    m_xs.append(width());
 
     for (auto i = 0; i < samplesSize - 1; ++i)
-        painter.drawLine(xs[i], ys[i]*yScale, xs[i+1], ys[i+1]*yScale);
+        painter.drawLine(m_xs[i], m_ys[i]*yScale, m_xs[i+1], m_ys[i+1]*yScale);
 }
 
-void Display::initializeXaxis()
+void Screen::display(const QVector<qreal>& spectrum)
 {
-    for (auto i = 0; i < WIDTH; ++i)
-        xs << i;
-}
-
-void Display::initializeYaxis()
-{
-    for (auto i = 0; i < WIDTH; ++i)
-        ys << HEIGHT / 2;
-}
-
-void Display::updateSpectrum(const QVector<qreal>& samples)
-{
-    ys.clear();
-    for (auto s : samples)
-        ys << static_cast<int>(s);
+    m_ys.clear();
+    for (auto sample : spectrum)
+        m_ys << static_cast<int>(sample);
     update();
 }

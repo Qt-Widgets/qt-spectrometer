@@ -5,21 +5,18 @@
 #include <QTimer>
 #include <QVector>
 
-class Display : public QOpenGLWidget
+class Screen : public QOpenGLWidget
 {
     Q_OBJECT
 
 public:
-    Display(QWidget *parent = nullptr);
-    ~Display();
+    Screen(QWidget *parent = nullptr);
+    ~Screen();
 
-    void updateSpectrum(const QVector<qreal>& samples);
+    void display(const QVector<qreal>& spectrum);
 
 private:
     void paintEvent(QPaintEvent *) override;
-
-    void initializeXaxis();
-    void initializeYaxis();
 
     enum {
         LINE_WIDTH = 1,
@@ -28,7 +25,7 @@ private:
         MAX_SAMPLE_VALUE = 100
     };
 
-    QVector<int> xs, ys;
+    QVector<int> m_xs, m_ys;
 };
 
 #endif // DISPLAY_H
