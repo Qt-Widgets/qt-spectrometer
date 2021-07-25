@@ -11,7 +11,7 @@ Display::Display(QWidget *parent)
     : QOpenGLWidget(parent)
 {
     setWindowTitle("OpenGL Widget Example");
-    setFixedSize(SAMPLES, MAX_Y_VALUE);
+    setFixedSize(WIDTH, MAX_Y_VALUE);
 
     initializeXaxis();
     initializeYaxis();
@@ -34,11 +34,11 @@ void Display::paintEvent(QPaintEvent *)
                 Qt::black);
 
     auto samplesSize = ys.size();
-    qreal scale = (qreal)width() / (qreal)samplesSize;
+    qreal xScale = (qreal)width() / (qreal)samplesSize;
 
     xs.clear();
     for (auto i = 0; i < samplesSize - 1; ++i)
-        xs << scale * i;
+        xs << xScale * i;
     xs.append(width());
 
     for (auto i = 0; i < samplesSize - 1; ++i)
@@ -47,13 +47,13 @@ void Display::paintEvent(QPaintEvent *)
 
 void Display::initializeXaxis()
 {
-    for (auto i = 0; i < SAMPLES; ++i)
+    for (auto i = 0; i < WIDTH; ++i)
         xs << i;
 }
 
 void Display::initializeYaxis()
 {
-    for (auto i = 0; i < SAMPLES; ++i)
+    for (auto i = 0; i < WIDTH; ++i)
         ys << MAX_Y_VALUE / 2;
 }
 

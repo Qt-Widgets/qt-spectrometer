@@ -23,7 +23,7 @@ private:
 
     enum {
         LINE_WIDTH = 1,
-        SAMPLES = 400,
+        WIDTH = 500,
         MAX_Y_VALUE = 200,
         UPDATE_INTERVAL_MS = 10
     };
