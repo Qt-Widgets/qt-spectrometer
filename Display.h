@@ -13,15 +13,16 @@ public:
     Display(QWidget *parent = nullptr);
     ~Display();
 
-    void paintEvent(QPaintEvent *) override;
+    void updateSpectrum(const QVector<qreal>& spectrumSamples);
     void refresh();
     void start();
     void stop();
 
 private:
+    void paintEvent(QPaintEvent *) override;
+
     void initializeXaxis();
     void initializeYaxis();
-    void updateYvalues();
 
     void appendTimer();
 

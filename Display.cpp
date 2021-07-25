@@ -38,7 +38,7 @@ void Display::paintEvent(QPaintEvent *)
 
 void Display::refresh()
 {
-    updateYvalues();
+    updateSpectrum({});
     update();
 }
 
@@ -64,7 +64,7 @@ void Display::initializeYaxis()
         ys << MAX_Y_VALUE / 2;
 }
 
-void Display::updateYvalues()
+void Display::updateSpectrum(const QVector<qreal>& samples)
 {
     for (auto i = 0; i < SAMPLES; ++i)
         ys[i] = QRandomGenerator::global()->bounded(0, MAX_Y_VALUE);
