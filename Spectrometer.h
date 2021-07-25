@@ -2,6 +2,7 @@
 #define SPECTROMETER_H
 
 #include <QPushButton>
+#include <QVector>
 #include <QWidget>
 
 #include "Display.h"
@@ -13,6 +14,12 @@ class Spectrometer : public QWidget
 public:
     Spectrometer(QWidget *parent = nullptr);
     ~Spectrometer();
+
+signals:
+    void receivedSamples(const QVector<qreal>& samples);
+
+private slots:
+    void sendNewSamples();
 
 private:
     void appendTimer();

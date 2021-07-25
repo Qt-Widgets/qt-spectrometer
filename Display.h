@@ -13,8 +13,7 @@ public:
     Display(QWidget *parent = nullptr);
     ~Display();
 
-    void updateSpectrum(const QVector<qreal>& spectrumSamples);
-    void refresh();
+    void updateSpectrum(const QVector<qreal>& samples);
 
 private:
     void paintEvent(QPaintEvent *) override;

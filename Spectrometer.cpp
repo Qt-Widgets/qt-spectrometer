@@ -1,7 +1,9 @@
 #include "Spectrometer.h"
 
 #include <QPushButton>
-
+//test
+#include <QRandomGenerator>
+//tset
 #include "Display.h"
 #include "Xaxis.h"
 
@@ -25,11 +27,20 @@ Spectrometer::~Spectrometer()
 {
 }
 
+void Spectrometer::sendNewSamples()
+{
+    int samples_num = QRandomGenerator::global()->bounded(100, 200);
+    QVector<qreal> ys;
+    for (auto i = 0; i < samples_num; ++i)
+        ys << QRandomGenerator::global()->bounded(0, 100);
+    emit receivedSamples(ys);
+}
+
 void Spectrometer::appendTimer()
 {
     m_timer->setInterval(UPDATE_INTERVAL_MS);
-    connect(m_timer, &QTimer::timeout, m_display, &Display::refresh);
-
+    connect(m_timer, &QTimer::timeout, this, &Spectrometer::sendNewSamples);
+    connect(this, &Spectrometer::receivedSamples, m_display, &Display::updateSpectrum);
 
     connect(m_startButton, &QPushButton::pressed, this, [this](){
         m_timer->start();

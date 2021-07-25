@@ -30,14 +30,8 @@ void Display::paintEvent(QPaintEvent *)
     painter.fillRect(
                 QRectF(0, 0, size().width(), size().height()),
                 Qt::black);
-    for (auto i = 0; i < SAMPLES - 1; ++i)
+    for (auto i = 0; i < ys.size() - 1; ++i)
         painter.drawLine(xs[i], ys[i], xs[i+1], ys[i+1]);
-}
-
-void Display::refresh()
-{
-    updateSpectrum({});
-    update();
 }
 
 void Display::initializeXaxis()
@@ -52,8 +46,10 @@ void Display::initializeYaxis()
         ys << MAX_Y_VALUE / 2;
 }
 
-void Display::updateSpectrum(const QVector<qreal>&)
+void Display::updateSpectrum(const QVector<qreal>& samples)
 {
-    for (auto i = 0; i < SAMPLES; ++i)
-        ys[i] = QRandomGenerator::global()->bounded(0, MAX_Y_VALUE);
+    ys.clear();
+    for (auto s : samples)
+        ys << static_cast<int>(s);
+    update();
 }
