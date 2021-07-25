@@ -13,8 +13,6 @@ Display::Display(QWidget *parent)
 
     initializeXaxis();
     initializeYaxis();
-
-    appendTimer();
 }
 
 Display::~Display()
@@ -42,16 +40,6 @@ void Display::refresh()
     update();
 }
 
-void Display::start()
-{
-    m_timer->start();
-}
-
-void Display::stop()
-{
-    m_timer->stop();
-}
-
 void Display::initializeXaxis()
 {
     for (auto i = 0; i < SAMPLES; ++i)
@@ -64,15 +52,8 @@ void Display::initializeYaxis()
         ys << MAX_Y_VALUE / 2;
 }
 
-void Display::updateSpectrum(const QVector<qreal>& samples)
+void Display::updateSpectrum(const QVector<qreal>&)
 {
     for (auto i = 0; i < SAMPLES; ++i)
         ys[i] = QRandomGenerator::global()->bounded(0, MAX_Y_VALUE);
-}
-
-void Display::appendTimer()
-{
-    m_timer->setInterval(UPDATE_INTERVAL_MS);
-    connect(m_timer, &QTimer::timeout, this, &Display::refresh);
-    m_timer->start();
 }

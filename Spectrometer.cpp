@@ -18,14 +18,25 @@ Spectrometer::Spectrometer(QWidget *parent)
     xAxis->setFixedWidth(m_display->size().width());
     xAxis->move(0, m_display->size().height());
 
-    connect(m_startButton, &QPushButton::pressed, this, [this](){
-        m_display->start();
-    });
-    connect(m_stopButton, &QPushButton::pressed, this, [this](){
-        m_display->stop(); }
-    );
+    appendTimer();
 }
 
 Spectrometer::~Spectrometer()
 {
+}
+
+void Spectrometer::appendTimer()
+{
+    m_timer->setInterval(UPDATE_INTERVAL_MS);
+    connect(m_timer, &QTimer::timeout, m_display, &Display::refresh);
+
+
+    connect(m_startButton, &QPushButton::pressed, this, [this](){
+        m_timer->start();
+    });
+    connect(m_stopButton, &QPushButton::pressed, this, [this](){
+        m_timer->stop(); }
+    );
+
+    m_timer->start();
 }

@@ -15,16 +15,12 @@ public:
 
     void updateSpectrum(const QVector<qreal>& spectrumSamples);
     void refresh();
-    void start();
-    void stop();
 
 private:
     void paintEvent(QPaintEvent *) override;
 
     void initializeXaxis();
     void initializeYaxis();
-
-    void appendTimer();
 
     enum {
         LINE_WIDTH = 1,
@@ -33,7 +29,6 @@ private:
         UPDATE_INTERVAL_MS = 10
     };
 
-    QTimer *m_timer {new QTimer{this}};
     QVector<int> xs, ys;
 };
 
