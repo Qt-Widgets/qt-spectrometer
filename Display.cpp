@@ -1,6 +1,8 @@
 #include "Display.h"
 
+//test
 #include <QDebug>
+//tset
 #include <QPainter>
 #include <QRandomGenerator>
 #include <QVector>
@@ -28,9 +30,18 @@ void Display::paintEvent(QPaintEvent *)
     painter.setPen(pen);
 
     painter.fillRect(
-                QRectF(0, 0, size().width(), size().height()),
+                QRectF(0, 0, width(), height()),
                 Qt::black);
-    for (auto i = 0; i < ys.size() - 1; ++i)
+
+    auto samplesSize = ys.size();
+    qreal scale = (qreal)width() / (qreal)samplesSize;
+
+    xs.clear();
+    for (auto i = 0; i < samplesSize - 1; ++i)
+        xs << scale * i;
+    xs.append(width());
+
+    for (auto i = 0; i < samplesSize - 1; ++i)
         painter.drawLine(xs[i], ys[i], xs[i+1], ys[i+1]);
 }
 
