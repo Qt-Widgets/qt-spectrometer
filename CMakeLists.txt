@@ -41,6 +41,9 @@ set(PROJECT_SOURCES
 
         Xaxis.h
         Xaxis.cpp
+
+        TestWindow.h
+        TestWindow.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -1,4 +1,5 @@
 #include "Spectrometer.h"
+#include "TestWindow.h"
 
 #include <QApplication>
 #include <QSurfaceFormat>
@@ -11,8 +12,8 @@ int main(int argc, char *argv[])
 
     setOpenGLsettings();
 
-    Spectrometer s;
-    s.show();
+    TestWindow tw;
+    tw.show();
 
     return a.exec();
 }
