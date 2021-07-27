@@ -15,7 +15,7 @@ public:
     ~Spectrometer();
 
 public slots:
-    void updateSpectrometer(const QVector<qreal>& samples);
+    void update(const QVector<qreal>& samples);
 
 private:
     void buildAxes();
@@ -25,7 +25,7 @@ private:
     enum {
         LINE_WIDTH = 1,
         WIDTH = 900,
-        HEIGHT = 400,
+        HEIGHT = 440,
         MAX_SAMPLE_VALUE = 100
     };
 
