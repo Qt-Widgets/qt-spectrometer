@@ -1,25 +1,24 @@
 #ifndef XAXIS_H
 #define XAXIS_H
 
+#include <QLabel>
 #include <QString>
 #include <QVBoxLayout>
+#include <QVector>
 
 #include "AbstractAxis.h"
 
-class Xaxis : public AbstractAxis
+class Xaxis : public QWidget
 {
     Q_OBJECT
 public:
     explicit Xaxis(QWidget *parent = nullptr);
 
-public slots:
-    void update(const QString& newLabel, const qreal center, qreal span);
+    void updateAxis(const QString& newLabel, const QVector<qreal>& newValues);
 
 private:
-    void setupLayout() override;
-    void buildValuesLayout();
-
-    QVBoxLayout *m_axisLayout;
+    QVector<qreal> m_values;
+    QLabel *m_label;
 };
 
 #endif // XAXIS_H

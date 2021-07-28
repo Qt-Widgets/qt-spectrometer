@@ -1,7 +1,7 @@
 #ifndef TESTWINDOW_H
 #define TESTWINDOW_H
 
-
+#include <QLineEdit>
 #include <QMainWindow>
 #include <QPushButton>
 #include <QVector>
@@ -26,6 +26,7 @@ private:
     void appendTimer();
     void setupDisplayControls();
     void buildWindow();
+    void updateSpectrometer();
 
     enum {
         WIDTH = 1500,
@@ -37,9 +38,10 @@ private:
 
     Spectrometer *m_spectrometer;
     QTimer *m_timer;
-    QPushButton *m_startButton;
-    QPushButton *m_stopButton;
-
+    QPushButton *m_startButton, *m_stopButton;
+    QPushButton *m_updateAxisButton;
+    QLineEdit *m_xsValues;
+    QLineEdit *m_xsLabel;
 };
 
 #endif // TESTWINDOW_H

@@ -24,8 +24,10 @@ void Spectrometer::update(const QVector<qreal>& samples)
 
 void Spectrometer::buildAxes()
 {   
+    //dev
     auto xAxis = new Xaxis {this};
-    xAxis->setFixedWidth(m_screen->width());
-    xAxis->move(0, m_screen->height());
-    xAxis->setFixedHeight(HEIGHT - m_screen->height());
+    xAxis->setFixedSize( {m_screen->width(), HEIGHT - m_screen->height()} );
+//    xAxis->move(0, m_screen->height());
+//    xAxis->updateAxis("Fr", {});
+    //ved
 }

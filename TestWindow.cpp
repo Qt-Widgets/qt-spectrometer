@@ -4,7 +4,9 @@
 #include <QPushButton>
 #include <QRandomGenerator>
 #include <QPushButton>
-
+//test
+#include <QDebug>
+//tset
 #include "Screen.h"
 
 
@@ -35,6 +37,7 @@ void TestWindow::appendTimer()
     connect(m_stopButton, &QPushButton::pressed, this, [this](){
         m_timer->stop(); }
     );
+    connect(m_updateAxisButton, &QPushButton::pressed, this, &TestWindow::updateSpectrometer);
 
     m_timer->start();
 }
@@ -48,8 +51,23 @@ void TestWindow::buildWindow()
     m_timer  = new QTimer{this};
     m_startButton = new QPushButton {"Start", this};
     m_stopButton = new QPushButton {"Stop", this};
+    m_updateAxisButton = new QPushButton {"Update Axis", this};
 
     m_startButton->move(width() - 150, 20);
     m_stopButton->move(width() - 150, 60);
+    m_updateAxisButton->move(width() - 150, 100);
+
+    m_xsLabel = new QLineEdit {this};
+    m_xsValues = new QLineEdit {this};
+
+    m_xsLabel->setPlaceholderText("Xs Label");
+    m_xsValues->setPlaceholderText("Xs Values");
+
+    m_xsLabel->move(width() - 370, 100);
+    m_xsValues->move(width() - 260, 100);
 }
 
+void TestWindow::updateSpectrometer()
+{
+    qDebug() << m_xsLabel->text() << m_xsValues->text().split(" ");
+}
