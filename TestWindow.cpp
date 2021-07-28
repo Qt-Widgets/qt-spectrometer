@@ -69,5 +69,9 @@ void TestWindow::buildWindow()
 
 void TestWindow::updateSpectrometer()
 {
-    qDebug() << m_xsLabel->text() << m_xsValues->text().split(" ");
+    QVector<qreal> newXValues;
+    qDebug() << "new label:" << m_xsLabel->text();
+    for (const auto& valString : m_xsValues->text().split(" "))
+        newXValues << valString.toDouble();
+    qDebug() << "new values:" << newXValues;
 }
