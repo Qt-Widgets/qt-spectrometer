@@ -29,7 +29,7 @@ void TestWindow::appendTimer()
 {
     m_timer->setInterval(UPDATE_INTERVAL_MS);
     connect(m_timer, &QTimer::timeout, this, &TestWindow::sendRandomSamples);
-    connect(this, &TestWindow::receivedNewSamples, m_spectrometer, &Spectrometer::update);
+    connect(this, &TestWindow::receivedNewSamples, m_spectrometer, &Spectrometer::updateScreen);
 
     connect(m_startButton, &QPushButton::pressed, this, [this](){
         m_timer->start();
@@ -37,7 +37,7 @@ void TestWindow::appendTimer()
     connect(m_stopButton, &QPushButton::pressed, this, [this](){
         m_timer->stop(); }
     );
-    connect(m_updateAxisButton, &QPushButton::pressed, this, &TestWindow::updateSpectrometer);
+    connect(m_updateAxisButton, &QPushButton::pressed, this, &TestWindow::updateSpectrometerAxis);
 
     m_timer->start();
 }
@@ -67,11 +67,10 @@ void TestWindow::buildWindow()
     m_xsValues->move(width() - 260, 100);
 }
 
-void TestWindow::updateSpectrometer()
+void TestWindow::updateSpectrometerAxis()
 {
     QVector<qreal> newXValues;
-    qDebug() << "new label:" << m_xsLabel->text();
     for (const auto& valString : m_xsValues->text().split(" "))
         newXValues << valString.toDouble();
-    qDebug() << "new values:" << newXValues;
+    m_spectrometer->updateXAxis(m_xsLabel->text(), newXValues);
 }

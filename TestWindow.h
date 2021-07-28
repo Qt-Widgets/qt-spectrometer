@@ -26,7 +26,7 @@ private:
     void appendTimer();
     void setupDisplayControls();
     void buildWindow();
-    void updateSpectrometer();
+    void updateSpectrometerAxis();
 
     enum {
         WIDTH = 1500,

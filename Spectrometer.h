@@ -5,6 +5,7 @@
 #include <QWidget>
 
 #include "Screen.h"
+#include "Xaxis.h"
 
 class Spectrometer : public QWidget
 {
@@ -15,10 +16,11 @@ public:
     ~Spectrometer();
 
 public slots:
-    void update(const QVector<qreal>& samples);
+    void updateScreen(const QVector<qreal>& samples);
+    void updateXAxis(const QString& newLabel, const QVector<qreal>& newValues);
 
 private:
-    void buildAxes();
+    void buildXAxis(const QString& label = "xs", const QVector<qreal>& values = {1, 2, 3, 4, 5});
 
     int m_samplesSize = 500;
 
@@ -30,6 +32,7 @@ private:
     };
 
     Screen *m_screen;
+    XAxis *m_xAxis;
     const QVector<qreal>* m_samples;
 };
 #endif // SPECTROMETER_H

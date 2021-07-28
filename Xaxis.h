@@ -1,24 +1,28 @@
 #ifndef XAXIS_H
 #define XAXIS_H
 
-#include <QLabel>
+#include <QSize>
 #include <QString>
-#include <QVBoxLayout>
 #include <QVector>
 
 #include "AbstractAxis.h"
 
-class Xaxis : public QWidget
+class XAxis : public QWidget
 {
     Q_OBJECT
-public:
-    explicit Xaxis(QWidget *parent = nullptr);
 
-    void updateAxis(const QString& newLabel, const QVector<qreal>& newValues);
+public:
+    explicit XAxis(const QString& label,
+                   const QVector<qreal>& values,
+                   const QSize& size,
+                   QWidget *parent = nullptr);
+
+    void paintEvent(QPaintEvent *) override;
+    void update(const QString& label, const QVector<qreal>& values);
 
 private:
+    QString m_label;
     QVector<qreal> m_values;
-    QLabel *m_label;
 };
 
 #endif // XAXIS_H
