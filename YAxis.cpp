@@ -22,18 +22,18 @@ void YAxis::paintEvent(QPaintEvent *)
     pen.setColor(Qt::black);
     painter.setPen(pen);
 
-    QPoint labelFrameOrigin {rect().x(), rect().y() + rect().height()/2};
-    QSize labelFrameSize {rect().width(), rect().height()/2};
+    QPoint labelFrameOrigin {rect().x(), rect().y()};
+    QSize labelFrameSize {rect().width()/2, rect().height()};
     QRect labelFrame {labelFrameOrigin, labelFrameSize};
 
     painter.drawText(labelFrame, Qt::AlignCenter, m_label);
 
-    QSize valueFrameSize {rect().width()/m_values.size(), rect().height()/2};
+    QSize valueFrameSize {rect().width()/2, rect().height()/m_values.size()};
 
-    auto i = 0;
+    auto i = 1;
     for (auto value : m_values)
     {
-        QRect valueFrame {QPoint {rect().x() + valueFrameSize.width()*i++, rect().y()}, valueFrameSize};
+        QRect valueFrame {QPoint {rect().x() + rect().width()/2, rect().height()  - valueFrameSize.height()*i++}, valueFrameSize};
         painter.drawText(valueFrame, Qt::AlignCenter, QString::number(value));
     }
 }

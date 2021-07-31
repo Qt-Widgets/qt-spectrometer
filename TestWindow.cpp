@@ -4,9 +4,7 @@
 #include <QPushButton>
 #include <QRandomGenerator>
 #include <QPushButton>
-//test
-#include <QDebug>
-//tset
+
 #include "Screen.h"
 
 
@@ -55,22 +53,33 @@ void TestWindow::buildWindow()
 
     m_startButton->move(width() - 150, 20);
     m_stopButton->move(width() - 150, 60);
-    m_updateAxisButton->move(width() - 150, 100);
+    m_updateAxisButton->move(width() - 150, 140);
 
     m_xsLabel = new QLineEdit {this};
     m_xsValues = new QLineEdit {this};
+    m_ysLabel = new QLineEdit {this};
+    m_ysValues = new QLineEdit {this};
 
     m_xsLabel->setPlaceholderText("Xs Label");
     m_xsValues->setPlaceholderText("Xs Values");
+    m_ysLabel->setPlaceholderText("Ys Label");
+    m_ysValues->setPlaceholderText("Ys Values");
 
     m_xsLabel->move(width() - 370, 100);
     m_xsValues->move(width() - 260, 100);
+    m_ysLabel->move(width() - 370, 140);
+    m_ysValues->move(width() - 260, 140);
 }
 
 void TestWindow::updateSpectrometerAxis()
 {
-    QVector<qreal> newXValues;
+    QVector<qreal> newXValues, newYValues;
+
     for (const auto& valString : m_xsValues->text().split(" "))
         newXValues << valString.toDouble();
+    for (const auto& valString : m_ysValues->text().split(" "))
+        newYValues << valString.toDouble();
+
     m_spectrometer->updateXAxis(m_xsLabel->text(), newXValues);
+    m_spectrometer->updateYAxis(m_ysLabel->text(), newYValues);
 }

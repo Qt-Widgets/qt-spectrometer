@@ -10,7 +10,7 @@ Spectrometer::Spectrometer(QWidget *parent)
 
     setFixedSize(SCREEN_WIDTH + Y_AXIS_WIDTH, SCREEN_HEIGHT + X_AXIS_HEIGHT);
 
-    buildXAxis();
+    buildXAxes();
 }
 
 Spectrometer::~Spectrometer()
@@ -27,8 +27,15 @@ void Spectrometer::updateXAxis(const QString& newLabel, const QVector<qreal>& ne
     m_xAxis->update(newLabel, newValues);
 }
 
-void Spectrometer::buildXAxis(const QString& label, const QVector<qreal>& values)
+void Spectrometer::updateYAxis(const QString& newLabel, const QVector<qreal>& newValues)
+{
+    m_yAxis->update(newLabel, newValues);
+}
+
+void Spectrometer::buildXAxes()
 {   
-    m_xAxis = new XAxis {label , values, {SCREEN_WIDTH, X_AXIS_HEIGHT}, this};
+    m_xAxis = new XAxis {"Xs" , {1, 2, 3, 4, 5}, {SCREEN_WIDTH, X_AXIS_HEIGHT}, this};
     m_xAxis->move( {Y_AXIS_WIDTH ,SCREEN_HEIGHT} );
+
+    m_yAxis = new YAxis {"Ys", {0, 20, 40, 60, 80, 100}, {Y_AXIS_WIDTH, SCREEN_HEIGHT}, this};
 }

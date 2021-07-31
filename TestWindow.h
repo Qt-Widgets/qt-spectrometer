@@ -40,8 +40,7 @@ private:
     QTimer *m_timer;
     QPushButton *m_startButton, *m_stopButton;
     QPushButton *m_updateAxisButton;
-    QLineEdit *m_xsValues;
-    QLineEdit *m_xsLabel;
+    QLineEdit *m_xsLabel, *m_xsValues, *m_ysLabel, *m_ysValues;
 };
 
 #endif // TESTWINDOW_H
