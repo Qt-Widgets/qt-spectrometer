@@ -20,8 +20,6 @@ private:
 
     enum {
         LINE_WIDTH = 1,
-        WIDTH = 900,
-        HEIGHT = 400,
         MAX_SAMPLE_VALUE = 100
     };
 

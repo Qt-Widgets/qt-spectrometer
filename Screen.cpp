@@ -6,7 +6,6 @@ Screen::Screen(QWidget *parent)
     : QOpenGLWidget(parent)
 {
     setWindowTitle("OpenGL Widget Example");
-    setFixedSize(WIDTH, HEIGHT);
 }
 
 Screen::~Screen()

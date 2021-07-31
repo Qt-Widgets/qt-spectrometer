@@ -23,9 +23,10 @@ private:
     void buildXAxis(const QString& label = "xs", const QVector<qreal>& values = {1, 2, 3, 4, 5});
 
     enum {
-        WIDTH = 900,
-        HEIGHT = 440,
-
+        SCREEN_WIDTH = 900,
+        SCREEN_HEIGHT = 400,
+        Y_AXIS_WIDTH = 40,
+        X_AXIS_HEIGHT = 40
     };
 
     Screen *m_screen;
