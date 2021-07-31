@@ -22,11 +22,20 @@ void XAxis::paintEvent(QPaintEvent *)
     pen.setColor(Qt::black);
     painter.setPen(pen);
 
-    QBrush brush {Qt::red};
-    painter.setBrush(brush);
-    painter.fillRect(rect(), brush);
+    QPoint labelFrameOrigin {rect().x(), rect().y() + rect().height()/2};
+    QSize labelFrameSize {rect().width(), rect().height()/2};
+    QRect labelFrame {labelFrameOrigin, labelFrameSize};
 
-    painter.drawText(rect(), Qt::AlignCenter, m_label);
+    painter.drawText(labelFrame, Qt::AlignCenter, m_label);
+
+    QSize valueFrameSize {rect().width()/m_values.size(), rect().height()/2};
+
+    auto i = 0;
+    for (auto value : m_values)
+    {
+        QRect valueFrame {QPoint {rect().x() + valueFrameSize.width()*i++, rect().y()}, valueFrameSize};
+        painter.drawText(valueFrame, Qt::AlignCenter, QString::number(value));
+    }
 }
 
 void XAxis::update(const QString& label, const QVector<qreal>& values)
