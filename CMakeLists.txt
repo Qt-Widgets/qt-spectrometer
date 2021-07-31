@@ -36,11 +36,11 @@ set(PROJECT_SOURCES
         Screen.h
         Screen.cpp
 
-        AbstractAxis.h
-        AbstractAxis.cpp
-
         XAxis.h
         XAxis.cpp
+
+        YAxis.h
+        YAxis.cpp
 
         TestWindow.h
         TestWindow.cpp

@@ -1,17 +1,17 @@
-#ifndef XAXIS_H
-#define XAXIS_H
+#ifndef YAXIS_H
+#define YAXIS_H
 
 #include <QSize>
 #include <QString>
 #include <QVector>
 #include <QWidget>
 
-class XAxis : public QWidget
+class YAxis : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit XAxis(const QString& label,
+    explicit YAxis(const QString& label,
                    const QVector<qreal>& values,
                    const QSize& size,
                    QWidget *parent = nullptr);
