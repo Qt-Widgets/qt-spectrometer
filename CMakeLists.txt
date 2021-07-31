@@ -39,8 +39,8 @@ set(PROJECT_SOURCES
         AbstractAxis.h
         AbstractAxis.cpp
 
-        Xaxis.h
-        Xaxis.cpp
+        XAxis.h
+        XAxis.cpp
 
         TestWindow.h
         TestWindow.cpp

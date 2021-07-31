@@ -1,8 +1,5 @@
 #include "Spectrometer.h"
-#include "Xaxis.h"
-//test
-#include <QDebug>
-//tset
+#include "XAxis.h"
 
 Spectrometer::Spectrometer(QWidget *parent)
     : QWidget(parent)

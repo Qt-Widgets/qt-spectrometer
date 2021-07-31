@@ -1,4 +1,4 @@
-#include "Xaxis.h"
+#include "XAxis.h"
 
 #include <QLabel>
 #include <QPainter>

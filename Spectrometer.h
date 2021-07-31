@@ -5,7 +5,7 @@
 #include <QWidget>
 
 #include "Screen.h"
-#include "Xaxis.h"
+#include "XAxis.h"
 
 class Spectrometer : public QWidget
 {
