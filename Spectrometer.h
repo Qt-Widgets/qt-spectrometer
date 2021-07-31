@@ -22,13 +22,10 @@ public slots:
 private:
     void buildXAxis(const QString& label = "xs", const QVector<qreal>& values = {1, 2, 3, 4, 5});
 
-    int m_samplesSize = 500;
-
     enum {
-        LINE_WIDTH = 1,
         WIDTH = 900,
         HEIGHT = 440,
-        MAX_SAMPLE_VALUE = 100
+
     };
 
     Screen *m_screen;
